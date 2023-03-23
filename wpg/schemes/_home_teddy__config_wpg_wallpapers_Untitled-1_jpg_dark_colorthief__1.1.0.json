@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/teddy/.config/wpg/wallpapers/Untitled-1.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0c0d0f",
+        "foreground": "#b2b3b7",
+        "cursor": "#b2b3b7"
+    },
+    "colors": {
+        "color0": "#0c0d0f",
+        "color1": "#7c6e6e",
+        "color2": "#8f7f71",
+        "color3": "#6a8c92",
+        "color4": "#8d99a2",
+        "color5": "#baa5a1",
+        "color6": "#c6b8ad",
+        "color7": "#b2b3b7",
+        "color8": "#666770",
+        "color9": "#7c6e6e",
+        "color10": "#8f7f71",
+        "color11": "#6a8c92",
+        "color12": "#8d99a2",
+        "color13": "#baa5a1",
+        "color14": "#c6b8ad",
+        "color15": "#b2b3b7"
+    }
+}

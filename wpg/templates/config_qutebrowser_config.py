@@ -1,0 +1,1 @@
+/home/teddy/.config/qutebrowser/config.py

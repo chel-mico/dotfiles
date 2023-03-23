@@ -1,0 +1,35 @@
+configuration {
+    show-icons: false;
+    hover-select: true;
+}
+
+* {
+    background-color: {color0};
+    altbg: {color7};
+    fg: {color1};
+    accent: {color2};
+    active: {color3};
+    font: "monospace";
+}
+
+element {
+    background-color: @altbg;
+    text-color: @fg;
+}
+
+element selected {
+    text-color: @accent;
+}
+
+element normal.active,
+element selected.active,
+element alternate.active,
+{
+    background-color: @active;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    font: @font;
+}

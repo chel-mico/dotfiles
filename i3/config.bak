@@ -1,0 +1,214 @@
+# for_window [class   = ".*"] title_format "%title  ⋯  %class"
+for_window [class   = ".*"] title_format "%class"
+title_align center
+
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font pango:NotoMono Nerd Font Mono 10
+font pango: Noto Sans 0
+
+# Set inner/outer gaps
+gaps inner 15
+gaps outer 0
+gaps top 0
+gaps bottom 0
+# workspace $ws5 gaps inner 0
+
+for_window [class   = "^.*"] border pixel 5
+for_window [title   = "^.*"] border pixel 5
+
+# border_radius 3
+smart_borders on
+smart_gaps on
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #ffffff
+set_from_resource $bg i3wm.color0 #1a1e2a
+set_from_resource $ac i3wm.color8 #222734
+
+
+# class                 border  backgr. text indicator child_border
+client.focused          $ac     $ac     $fg  $ac       $ac
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+# RANDOM HOTKEYS
+
+set $mod Mod4
+
+# Layouts
+bindsym $mod+i layout toggle split
+bindsym $mod+ctrl+i layout tabbed
+
+# Resize to a presentation mode
+bindsym $mod+ctrl+a floating toggle; resize set 1285 960; move position 40px 80px
+
+# Terminal
+bindsym $mod+Return exec kitty
+
+# Browser
+bindsym $mod+Shift+Return exec qutebrowser
+
+# File manager
+bindsym $mod+d exec pcmanfm
+
+# Swap caps and esc
+bindsym $mod+ctrl+e exec setxkbmap -option caps:swapescape
+
+# Brightness (install: light and run: sudo chmod +s /usr/bin/light)
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+
+# Opacity
+bindsym $mod+XF86MonBrightnessUp exec picom-trans -c +2
+bindsym $mod+XF86MonBrightnessDown exec picom-trans -c -- -1
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Screenshot
+bindsym Print exec --no-startup-id flameshot full -p ~/Storage/Screenshots
+bindsym Shift+Print exec --no-startup-id flameshot gui -p ~/Storage/Screenshots
+
+# ROFI SCRIPTS:
+
+# Rofi drun menu
+bindsym $mod+space exec "rofi -show run"
+
+# Network manager
+bindsym $mod+n exec "$HOME/.config/rofi/scripts/networkmanager"
+
+# Power menu in rofi
+bindsym $mod+ctrl+p exec rofi -show power-menu -modi power-menu:"~/.config/rofi/scripts/powermenu.sh"
+
+# Move to workspace on the left and right
+bindsym $mod+k workspace prev
+bindsym $mod+j workspace next
+
+bindsym --whole-window button8 workspace next
+bindsym --whole-window button9 workspace prev
+
+# Move to an empty workspace
+# bindsym $mod+Control+Down exec --no-startup-id "~/.config/rofi/scripts/i3_empty_workspace.sh"
+
+
+# GENERAL SETTINGS
+
+# Restart, and reload i3
+bindsym $mod+ctrl+r restart exec xset r rate 200 60 exec setxkbmap -option caps:swapescape
+
+# Toggle between floating and tiling state
+bindsym $mod+f floating toggle
+
+# Kill the focused app
+bindsym $mod+q kill
+
+# Binding mode to resize windows
+bindsym $mod+r mode "Resize"
+mode "Resize" {
+
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Binding mode to move windows
+bindsym $mod+m mode "Move"
+mode "Move" {
+
+        bindsym Left move left 5 px
+        bindsym Down move down 5 px
+        bindsym Up move up 5 px
+        bindsym Right move right
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# To shift focus
+# bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Tab focus right
+
+# To move windows around
+bindsym $mod+ctrl+Left move left
+bindsym $mod+ctrl+Down move down
+bindsym $mod+ctrl+Up move up
+bindsym $mod+ctrl+Right move right
+
+# Split in horizontal and vertical orientations
+bindsym $mod+ctrl+h split h
+bindsym $mod+ctrl+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+ctrl+f fullscreen toggle
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+# Move focused container to workspace
+bindsym $mod+ctrl+1 move container to workspace number 1
+bindsym $mod+ctrl+2 move container to workspace number 2
+bindsym $mod+ctrl+3 move container to workspace number 3
+bindsym $mod+ctrl+4 move container to workspace number 4
+bindsym $mod+ctrl+5 move container to workspace number 5
+bindsym $mod+ctrl+6 move container to workspace number 6
+bindsym $mod+ctrl+7 move container to workspace number 7
+bindsym $mod+ctrl+8 move container to workspace number 8
+bindsym $mod+ctrl+9 move container to workspace number 9
+
+
+# Gap size increase/decrease bind mode
+set $mode_gaps Gaps
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym Up gaps inner current plus 5
+    bindsym Down gaps inner current minus 5
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+# STARTUP
+exec_always pkill -9 polybar ; polybar
+exec_always killall picom ; picom -b --config ~/.config/picom/picom.conf
+exec --no-startup-id ~/.config/wpg/wp_init.sh

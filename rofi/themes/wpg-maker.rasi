@@ -1,0 +1,33 @@
+* {
+    bg:                     #11121aaa;
+
+    normal-bg:              #11121a00; //transparency last two hex
+    alternate-normal-bg:    @normal-bg;
+    selected-normal-bg:     #A07663;
+
+    active-bg:              #11121a;
+    alternate-active-bg:    @active-bg;
+    selected-active-bg:     @selected-normal-bg;
+
+    urgent-bg:              @active-bg;
+    alternate-urgent-bg:    @urgent-bg;
+    selected-urgent-bg:     @selected-normal-bg;
+
+
+    fg:                     #fffffa;
+
+    normal-fg:              @fg;
+    alternate-normal-fg:    @normal-fg;
+    selected-normal-fg:     @fg;
+
+    active-fg:              #505493;
+    alternate-active-fg:    @active-fg;
+    selected-active-fg:     @active-fg;
+
+    urgent-fg:              #d1d1ca;
+    alternate-urgent-fg:    @urgent-fg;
+    selected-urgent-fg:     @urgent-fg;
+
+    bg-color:               #00000000;
+    border-color:           #373965aa;
+}

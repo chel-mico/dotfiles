@@ -1,0 +1,2 @@
+require("pistachiostudio")
+print("hello")
